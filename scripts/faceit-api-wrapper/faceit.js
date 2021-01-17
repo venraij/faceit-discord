@@ -1,7 +1,7 @@
 const axios = require('axios').default;
-const key = 'bad86683-5f5c-4624-aa35-6021f5a16587';
+const c = require ('../../config.js');
 
-axios.defaults.headers.common['Authorization'] = `Bearer ${key}`;
+axios.defaults.headers.common['Authorization'] = `Bearer ${c.faceit_key}`;
 
 module.exports = {
     getChampionshipDetails,

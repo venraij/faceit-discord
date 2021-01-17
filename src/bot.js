@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const config = require('../config.json');
+const c = require('../config.js');
 const faceit = require('../scripts/faceit-api-wrapper/faceit');
 
 const ongoingMatches = [];
@@ -16,13 +16,13 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === `${config.prefix} hello`) {
+  if (msg.content === `${c.prefix} hello`) {
     msg.reply(`Hello!`)
         .then(message => console.log(`Sent message: ${message.content}`))
         .catch(console.error);
   }
   
-  if (msg.content.startsWith(`${config.prefix} stats`)) {
+  if (msg.content.startsWith(`${c.prefix} stats`)) {
       let id = msg.content.split('stats')[1]
       faceit.getChampionshipDetails(id)
           .then(res => {
@@ -101,5 +101,5 @@ async function removeMatchMessage(id) {
 }
 
 //Initialize bot
-client.login(config.token)
+client.login(c.token)
     .catch(console.error);
