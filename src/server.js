@@ -27,7 +27,7 @@ app.post('/webhooks', function (req, res) {
                 break;
             case 'match_status_configuring':
                 if (req.body.payload.entity.id === '59faa6b2-e3e5-4dd0-8262-b980f569b65d') {
-                    bot.createNewMatchMessage(req.body.payload.id);
+                    // bot.createNewMatchMessage(req.body.payload.id);
                 }
                 break;
             case  'match_status_aborted':
