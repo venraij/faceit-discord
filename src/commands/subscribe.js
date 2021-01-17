@@ -1,4 +1,5 @@
 import Discord from 'discord.js';
+let dClient;
 
 /**
  * Subscribes a specified Discord channel to a specified FACEIT chat room.
@@ -8,18 +9,25 @@ import Discord from 'discord.js';
  * @param {Message} msg - A Discord message.
  * */
 export default async function subscribeController(client, msg) {
+    dClient = client;
+    let msgArray = msg.content.split(' ');
 
+    switch (msgArray[2]) {
+        case 'chat':
+            await faceitRoom(msg.channel, msgArray[3]);
+            break;
+    }
 }
 
 /**
  * Subscribes a specified Discord channel to a specified FACEIT chat room.
  *
  * @author Nick van Raaij
- * @param {string} channel_name - A Discord channel name.
+ * @param {module:"discord.js".TextChannel} channel - A Discord channel object.
  * @param {string} room_id - A FACEIT chatroom id.
  * @return {Promise} Resolved promise
  * */
-async function faceitRoom(channel_name, room_id) {
+async function faceitRoom(channel, room_id) {
 
 }
 
