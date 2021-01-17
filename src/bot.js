@@ -2,13 +2,14 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const c = require('../config.js');
 const faceit = require('../scripts/faceit-api-wrapper/faceit');
+import subscribe from './commands/subscribe'
 
 const ongoingMatches = [];
 
 module.exports = {
     createNewMatchMessage,
     createNewMatchChannel,
-    removeMatchMessage
+    removeMatchMessage,
 }
 
 client.on('ready', () => {
@@ -17,23 +18,23 @@ client.on('ready', () => {
 
 client.on('message', msg => {
 
-  if (msg.content === `${c.prefix} hello`) {
-    msg.reply(`Hello!`)
-        .then(message => console.log(`Sent message: ${message.content}`))
-        .catch(console.error);
-  }
+    if (msg.content.startsWith(`${c.prefix} subscribe`)) {
+        subscribe.subscribeController(client, msg)
+            .then()
+            .catch()
+    }
   
-  if (msg.content.startsWith(`${c.prefix} stats`)) {
-      let id = msg.content.split('stats')[1]
-      faceit.getChampionshipDetails(id)
-          .then(res => {
-              msg.channel.send(`
-              Name: ${res.data.name}\nType: ${res.data.type}\nGame: ${res.data.game_id}\nRegion: ${res.data.region}\nSlots: ${res.data.slots}\nGroups: ${res.data.total_groups}
-              `)
-                  .then(message => console.log(`Sent message: ${message.content}`))
-                  .catch(console.error);
-          });
-  }
+  // if (msg.content.startsWith(`${c.prefix} stats`)) {
+  //     let id = msg.content.split('stats')[1]
+  //     faceit.getChampionshipDetails(id)
+  //         .then(res => {
+  //             msg.channel.send(`
+  //             Name: ${res.data.name}\nType: ${res.data.type}\nGame: ${res.data.game_id}\nRegion: ${res.data.region}\nSlots: ${res.data.slots}\nGroups: ${res.data.total_groups}
+  //             `)
+  //                 .then(message => console.log(`Sent message: ${message.content}`))
+  //                 .catch(console.error);
+  //         });
+  // }
 });
 
 /**

@@ -1,9 +1,14 @@
-module.exports = {
-    faceitRoom,
-    faceitHubOngoingMatches,
-    faceiteHubs,
-    faceitChampionshipOngoingMatches,
-    faceitTeamTournaments
+import Discord from 'discord.js';
+
+/**
+ * Subscribes a specified Discord channel to a specified FACEIT chat room.
+ *
+ * @author Nick van Raaij
+ * @param {module:"discord.js".Client} client - A Discord client.
+ * @param {Message} msg - A Discord message.
+ * */
+export default async function subscribeController(client, msg) {
+
 }
 
 /**
