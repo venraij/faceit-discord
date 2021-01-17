@@ -16,6 +16,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
+
   if (msg.content === `${c.prefix} hello`) {
     msg.reply(`Hello!`)
         .then(message => console.log(`Sent message: ${message.content}`))
@@ -101,5 +102,4 @@ async function removeMatchMessage(id) {
 }
 
 //Initialize bot
-client.login(c.token)
-    .catch(console.error);
+client.login(c.token).catch(console.error);
