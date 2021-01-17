@@ -65,10 +65,4 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
-      
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v2.1.4
-      with:
-        node-version: 14.15.4
-        # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
      
