@@ -1,0 +1,5 @@
+module.exports = {
+    prefix: "!luci",
+    token: "YOUR DISCORD API TOKEN",
+    faceit_key: "YOUR FACEIT API KEY"
+}
